@@ -130,12 +130,20 @@
     }
     .hero-visual .main-img {
         width: 90%;
+        aspect-ratio: 4 / 3;
+        max-height: 520px;
         border-radius: 24px;
         overflow: hidden;
         box-shadow: 0 30px 80px rgba(0,30,80,0.12);
         position: relative;
     }
-    .hero-visual .main-img img { width: 100%; display: block; }
+    .hero-visual .main-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
     .hero-float-card {
         position: absolute;
         background: #fff;
@@ -560,7 +568,7 @@
 
             <div class="hero-visual">
                 <div class="main-img">
-                    <img src="{{ asset('images/illustrations/insurance-cartoon.svg') }}" alt="Cartoon insurance advisory team illustration">
+                    <img src="{{ asset('images/cover_image.png') }}" alt="Insurance advisory cover image">
                 </div>
                 <div class="hero-float-card fc-bottom">
                     <div class="fc-icon"><i class="fa-solid fa-shield-halved"></i></div>
