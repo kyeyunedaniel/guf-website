@@ -5,45 +5,461 @@
 
 @section('content')
 
-{{-- ═══════════════════════════════════════
-     HERO — REFINED & DYNAMIC
-═══════════════════════════════════════ --}}
-<section class="hero-full" style="padding: 100px 0; position: relative; overflow: hidden;">
-    <div class="hero-full__bg" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80'); filter: brightness(0.4);"></div>
-    <div class="hero-full__overlay" style="background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);"></div>
-    
-    <div class="container" style="position: relative; z-index: 5;">
-        <div class="hero-full__inner" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;">
-            <div>
-                <div class="chip chip-light" style="backdrop-filter: blur(4px); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 1.5rem;">
-                    <i class="fa-solid fa-shield-halved" style="color: var(--brand-lt);"></i>
-                    IRA Licensed Corporate Insurance Agency
-                </div>
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; color: #fff;">
-                    Your Trusted <span style="color: var(--brand-lt); font-style: italic;">Corporate Insurance</span> Partner
-                </h1>
-                <p class="hero-lead" style="font-size: 1.25rem; color: rgba(255,255,255,0.9); max-width: 600px; margin-bottom: 2rem;">
-                    Expert guidance and tailored insurance solutions to protect your business, assets, and future across Uganda.
-                </p>
-                
-                <div class="hero-actions" style="display: flex; gap: 1rem; margin-bottom: 3rem;">
-                    <a href="{{ route('contact') }}" class="btn btn-primary btn-lg" style="padding: 1rem 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
-                        <i class="fa-solid fa-paper-plane"></i> Get a Free Quote
-                    </a>
-                    <a href="{{ route('about') }}" class="btn btn-ghost-light btn-lg" style="border: 2px solid rgba(255,255,255,0.3);">Learn About Us</a>
-                </div>
+<style>
+    /* ── HOME PAGE OVERRIDES ── */
+    .hero-light {
+        background: linear-gradient(160deg, #eef4ff 0%, #f5f9ff 50%, #e8f5f5 100%);
+        padding: 90px 0 80px;
+        overflow: hidden;
+        position: relative;
+    }
+    .hero-light::before {
+        content: '';
+        position: absolute;
+        width: 600px; height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0,82,204,0.06) 0%, transparent 70%);
+        top: -100px; right: -100px;
+        pointer-events: none;
+    }
+    .hero-light::after {
+        content: '';
+        position: absolute;
+        width: 400px; height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0,180,180,0.07) 0%, transparent 70%);
+        bottom: -80px; left: 80px;
+        pointer-events: none;
+    }
+    .hero-light-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    .hero-light-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0,82,204,0.08);
+        border: 1px solid rgba(0,82,204,0.15);
+        color: var(--brand);
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.02em;
+    }
+    .hero-light h1 {
+        font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+        line-height: 1.12;
+        color: #0d1f3c;
+        margin-bottom: 1.25rem;
+        font-weight: 800;
+    }
+    .hero-light h1 em {
+        font-style: normal;
+        color: var(--brand);
+    }
+    .hero-light .hero-sub {
+        font-size: 1.1rem;
+        color: #546e8a;
+        line-height: 1.7;
+        max-width: 520px;
+        margin-bottom: 2.25rem;
+    }
+    .hero-light-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 2.5rem;
+    }
+    .btn-teal {
+        background: #00b4b4;
+        color: #fff;
+        border-color: #00b4b4;
+        border-radius: var(--radius-md);
+        padding: 0.9rem 1.85rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .btn-teal:hover { background: #009a9a; border-color: #009a9a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,180,180,0.25); }
+    .btn-outline-navy {
+        background: transparent;
+        color: #0d1f3c;
+        border: 1.5px solid #c8d8e8;
+        border-radius: var(--radius-md);
+        padding: 0.9rem 1.85rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .btn-outline-navy:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-ultra-light); }
+    .hero-trust-pills {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    .trust-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #546e8a;
+    }
+    .trust-pill i { color: #00b4b4; font-size: 0.9rem; }
+    .hero-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .hero-visual .main-img {
+        width: 90%;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,30,80,0.12);
+        position: relative;
+    }
+    .hero-visual .main-img img { width: 100%; display: block; }
+    .hero-float-card {
+        position: absolute;
+        background: #fff;
+        border-radius: 16px;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 10px 40px rgba(0,30,80,0.12);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .hero-float-card.fc-bottom {
+        bottom: -20px; left: -10px;
+        border-left: 4px solid #00b4b4;
+    }
+    .hero-float-card.fc-top {
+        top: 20px; left: -30px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.25rem;
+    }
+    .fc-icon {
+        width: 36px; height: 36px;
+        border-radius: 10px;
+        background: #e8f5f5;
+        color: #00b4b4;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+    .fc-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: #0d1f3c; }
+    .fc-text span { font-size: 0.75rem; color: #788fa8; }
 
-                <div class="hero-trust" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; opacity: 0.8;">
-                    <div class="trust-item"><i class="fa-solid fa-circle-check"></i><span>IRA Regulated</span></div>
-                    <div class="trust-item"><i class="fa-solid fa-circle-check"></i><span>Fast Response</span></div>
-                    <div class="trust-item"><i class="fa-solid fa-circle-check"></i><span>Client-First Advisory</span></div>
-                    <div class="trust-item"><i class="fa-solid fa-circle-check"></i><span>Mayfair Partner</span></div>
+    /* ── STATS BAR ── */
+    .stats-bar {
+        background: #fff;
+        border-top: 1px solid #e8eef5;
+        border-bottom: 1px solid #e8eef5;
+        padding: 2rem 0;
+    }
+    .stats-bar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sbi {
+        flex: 1;
+        text-align: center;
+        padding: 0 1rem;
+        border-right: 1px solid #e8eef5;
+    }
+    .sbi:last-child { border-right: none; }
+    .sbi strong {
+        display: block;
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: var(--brand);
+        line-height: 1.1;
+    }
+    .sbi span {
+        font-size: 0.75rem;
+        color: #788fa8;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-weight: 600;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { padding: 96px 0; }
+    .about-img-wrap {
+        position: relative;
+    }
+    .about-img-wrap img {
+        width: 100%;
+        height: 480px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,30,80,0.1);
+    }
+    .about-badge-float {
+        position: absolute;
+        bottom: 28px; right: -18px;
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.1rem 1.4rem;
+        box-shadow: 0 10px 30px rgba(0,30,80,0.12);
+        border-left: 4px solid var(--brand);
+        text-align: center;
+        min-width: 130px;
+    }
+    .about-badge-float .abf-num { font-size: 1.6rem; font-weight: 900; color: var(--brand); line-height: 1; }
+    .about-badge-float .abf-lbl { font-size: 0.75rem; font-weight: 700; color: #546e8a; margin-top: 2px; }
+    .check-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; gap: 0.9rem; }
+    .check-list li {
+        display: flex; align-items: flex-start; gap: 10px;
+        color: #374f6b; font-weight: 500; font-size: 0.95rem;
+    }
+    .check-list li .ci {
+        width: 22px; height: 22px; border-radius: 50%;
+        background: #e0f7f7; color: #00b4b4;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.7rem; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* ── SERVICES TAB ── */
+    .services-section { background: #f7fbff; padding: 96px 0; }
+    .svc-layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    .svc-tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    .svc-tab {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.85rem 1.1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        text-align: left;
+        font-family: inherit;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #788fa8;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    .svc-tab::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 20%; bottom: 20%;
+        width: 3px;
+        border-radius: 3px;
+        background: transparent;
+        transition: background 0.2s;
+    }
+    .svc-tab:hover { background: #e8f0fe; color: var(--brand); }
+    .svc-tab.active {
+        background: #fff;
+        color: #0d1f3c;
+        font-weight: 700;
+        box-shadow: 0 4px 16px rgba(0,30,80,0.08);
+    }
+    .svc-tab.active::before { background: var(--brand); }
+    .svc-tab i { font-size: 1rem; color: inherit; }
+    .svc-panel { display: none; }
+    .svc-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .svc-panel-img {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0,30,80,0.1);
+    }
+    .svc-panel-img img { width: 100%; height: 320px; object-fit: cover; display: block; }
+    .svc-panel-body .overline {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #00b4b4;
+        margin-bottom: 0.6rem;
+        display: block;
+    }
+    .svc-panel-body h3 { font-size: 1.7rem; color: #0d1f3c; margin-bottom: 1rem; line-height: 1.25; }
+    .svc-panel-body p { color: #546e8a; font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.5rem; }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 96px 0; background: #fff; }
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding-top: 3rem;
+        position: relative;
+    }
+    .process-steps::before {
+        content: '';
+        position: absolute;
+        top: 58px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+        height: 2px;
+        background: linear-gradient(90deg, #c8d8e8 0%, var(--brand) 50%, #c8d8e8 100%);
+        z-index: 0;
+    }
+    .step-box {
+        background: #f7fbff;
+        border-radius: 18px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+        border: 1.5px solid #e4eef8;
+        transition: all 0.25s ease;
+    }
+    .step-box:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,30,80,0.08); border-color: var(--brand); }
+    .step-number {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--brand);
+        color: var(--brand);
+        font-weight: 800;
+        font-size: 1rem;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1.25rem;
+        position: relative; z-index: 2;
+    }
+    .step-icon {
+        width: 52px; height: 52px;
+        border-radius: 14px;
+        background: rgba(0,82,204,0.08);
+        color: var(--brand);
+        font-size: 1.3rem;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1rem;
+    }
+    .step-box h3 { font-size: 1.1rem; color: #0d1f3c; margin-bottom: 0.6rem; }
+    .step-box p { font-size: 0.87rem; color: #788fa8; line-height: 1.65; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+        background: linear-gradient(135deg, #003380 0%, #0052CC 60%, #0070e0 100%);
+        border-radius: 24px;
+        margin: 0 32px 60px;
+        padding: 72px 48px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    .cta-band::before {
+        content: '';
+        position: absolute;
+        width: 500px; height: 500px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        top: -200px; right: -100px;
+    }
+    .cta-band::after {
+        content: '';
+        position: absolute;
+        width: 300px; height: 300px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        bottom: -100px; left: 50px;
+    }
+    .cta-band h2 { font-size: 2.25rem; color: #fff; margin-bottom: 1rem; }
+    .cta-band p { font-size: 1.05rem; opacity: 0.88; max-width: 640px; margin: 0 auto 2.25rem; line-height: 1.7; }
+    .cta-band-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+    .btn-white { background: #fff; color: var(--brand); border: none; border-radius: var(--radius-md); padding: 0.95rem 2rem; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+    .btn-white:hover { background: #eef4ff; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
+    .btn-outline-white { background: transparent; border: 1.5px solid rgba(255,255,255,0.4); color: #fff; border-radius: var(--radius-md); padding: 0.95rem 2rem; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+        .hero-light-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .hero-visual { justify-content: center; }
+        .hero-visual .main-img { width: 100%; }
+        .hero-float-card.fc-top { display: none; }
+        .svc-layout { grid-template-columns: 1fr; }
+        .svc-tabs { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+        .svc-panel.active { grid-template-columns: 1fr; }
+        .process-steps { grid-template-columns: 1fr; }
+        .process-steps::before { display: none; }
+        .stats-bar-inner { flex-wrap: wrap; gap: 1.5rem; }
+        .sbi { flex: 1 0 40%; border-right: none; border-bottom: 1px solid #e8eef5; padding-bottom: 1rem; }
+        .cta-band { margin: 0 16px 48px; padding: 48px 24px; }
+        .about-section .grid-2 { grid-template-columns: 1fr; }
+        .about-badge-float { right: 10px; }
+    }
+</style>
+
+{{-- ═══════════════════════════════════════
+     HERO — LIGHT, MODERN & CLEAN
+═══════════════════════════════════════ --}}
+<section class="hero-light">
+    <div class="container">
+        <div class="hero-light-grid">
+            <div>
+                <div class="hero-light-tag">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    IRA Licensed &bull; Corporate Insurance Uganda
+                </div>
+                <h1>Smart insurance for a <em>happier</em> business.</h1>
+                <p class="hero-sub">
+                    We work with Uganda's leading insurers to secure coverage tailored to your corporate needs — Motor, Construction, Liability, Bonds and more.
+                </p>
+                <div class="hero-light-actions">
+                    <a href="{{ route('contact') }}" class="btn-teal">
+                        <i class="fa-solid fa-comments"></i> Talk to us
+                    </a>
+                    <a href="{{ route('services') }}" class="btn-outline-navy">
+                        Explore Services <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="hero-trust-pills">
+                    <span class="trust-pill"><i class="fa-solid fa-circle-check"></i> IRA Regulated</span>
+                    <span class="trust-pill"><i class="fa-solid fa-circle-check"></i> 14+ Products</span>
+                    <span class="trust-pill"><i class="fa-solid fa-circle-check"></i> Client-First</span>
+                    <span class="trust-pill"><i class="fa-solid fa-circle-check"></i> Mayfair Partner</span>
                 </div>
             </div>
 
-            <div class="hero-imgs" style="position: relative; display: flex; align-items: center; justify-content: center;">
-                <div class="hi-main" style="transform: perspective(1000px) rotateY(-10deg); border: 8px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-lg);">
-                    <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80" alt="Corporate insurance" style="width: 100%; display: block;">
+            <div class="hero-visual">
+                <div class="main-img">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Professional insurance team">
+                </div>
+                <div class="hero-float-card fc-bottom">
+                    <div class="fc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="fc-text">
+                        <strong>IRA Certified</strong>
+                        <span>Licensed Agency Uganda</span>
+                    </div>
+                </div>
+                <div class="hero-float-card fc-top">
+                    <div class="fc-icon" style="background: #eef4ff; color: var(--brand);"><i class="fa-solid fa-star"></i></div>
+                    <div class="fc-text">
+                        <strong>10+ Clients</strong>
+                        <span>Trusted corporate partners</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,57 +467,51 @@
 </section>
 
 {{-- ═══════════════════════════════════════
-     STATS — MINIMALIST BAR
+     STATS BAR
 ═══════════════════════════════════════ --}}
-<section class="stats-strip" style="background: #fff; border-bottom: 1px solid #eee; padding: 2rem 0;">
+<div class="stats-bar">
     <div class="container">
-        <div class="stats-grid" style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
-            @php
-                $stats = [
-                    ['2023', 'Licensed Since'],
-                    ['14+', 'Insurance Products'],
-                    ['10+', 'Corporate Clients'],
-                    ['IRA', 'Licensed & Regulated']
-                ];
-            @endphp
-            @foreach($stats as $stat)
-                <div class="stat-item" style="flex: 1; border-right: 1px solid #eee; last-child: border-none;">
-                    <div class="stat-num" style="display: block; font-size: 2rem; font-weight: 800; color: var(--brand);">{{ $stat[0] }}</div>
-                    <div class="stat-label" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; color: #666; font-weight: 600;">{{ $stat[1] }}</div>
+        <div class="stats-bar-inner">
+            @php $stats = [['2023','Licensed Since'],['14+','Insurance Products'],['10+','Corporate Clients'],['IRA','Regulated & Certified']]; @endphp
+            @foreach($stats as $s)
+                <div class="sbi">
+                    <strong>{{ $s[0] }}</strong>
+                    <span>{{ $s[1] }}</span>
                 </div>
             @endforeach
         </div>
     </div>
-</section>
+</div>
 
 {{-- ═══════════════════════════════════════
-     ABOUT & SERVICES — BENTO STYLE
+     ABOUT — WHO WE ARE
 ═══════════════════════════════════════ --}}
-<section class="section" style="padding: 100px 0;">
+<section class="about-section">
     <div class="container">
-        <div class="grid-2" style="align-items: center; gap: 5rem;">
-            <div style="position: relative;">
-                <div style="background: var(--brand-lt); width: 80%; height: 80%; position: absolute; top: -20px; left: -20px; z-index: -1; border-radius: var(--r-lg); opacity: 0.1;"></div>
-                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="GUF Agency" style="width:100%; height:480px; object-fit:cover; border-radius:var(--r-lg); box-shadow:var(--sh-lg);">
-                <div class="card" style="position:absolute; bottom: 30px; right: -20px; padding: 1.5rem; background:#fff; border-radius: var(--r-md); box-shadow: var(--sh-lg); border-left: 5px solid var(--brand);">
-                    <div style="font-size: 1.8rem; font-weight: 900; color: var(--brand);">IRA</div>
-                    <div style="font-size: 0.9rem; font-weight: 700;">Certified Partner</div>
+        <div class="grid-2" style="gap: 5rem; align-items: center;">
+            <div class="about-img-wrap">
+                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="GUF Agency team">
+                <div class="about-badge-float">
+                    <div class="abf-num">IRA</div>
+                    <div class="abf-lbl">Certified Partner</div>
                 </div>
             </div>
             <div>
-                <div class="chip"><i class="fa-solid fa-building"></i> Who We Are</div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">A Licensed Insurance Agency Built for <span style="color: var(--brand);">Corporate Uganda</span></h2>
-                <p class="lead" style="color: #555; margin-bottom: 1.5rem;">GUF Agency Ltd is a fully incorporated, IRA-licensed corporate insurance agency dedicated to delivering expert, unbiased advisory.</p>
-                <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
-                    @foreach(['Incorporated under the Companies Act', 'Regulated by IRA Uganda', 'Independent advisory - client interests first', 'Partnered with Mayfair Insurance'] as $item)
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: rgba(0,100,0,0.1); color: green; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                            <span style="font-weight: 500; color: #444;">{{ $item }}</span>
-                        </div>
+                <div class="chip" style="margin-bottom: 1rem;"><i class="fa-solid fa-building"></i> Who We Are</div>
+                <h2 style="font-size: 2.25rem; color: #0d1f3c; line-height: 1.2; margin-bottom: 1rem;">
+                    A Licensed Agency Built for <span style="color: var(--brand);">Corporate Uganda</span>
+                </h2>
+                <p style="color: #546e8a; font-size: 1rem; line-height: 1.75; margin-bottom: 0.5rem;">
+                    GUF Agency Ltd is a fully incorporated, IRA-licensed corporate insurance agency dedicated to delivering expert, unbiased advisory — putting client interests first in every recommendation we make.
+                </p>
+                <ul class="check-list">
+                    @foreach(['Incorporated under the Companies Act','Regulated by Insurance Regulatory Authority Uganda','Independent advisory — client interests always first','Preferred partner of Mayfair Insurance'] as $item)
+                        <li>
+                            <div class="ci"><i class="fa-solid fa-check"></i></div>
+                            {{ $item }}
+                        </li>
                     @endforeach
-                </div>
+                </ul>
                 <div class="btn-row">
                     <a href="{{ route('about') }}" class="btn btn-primary">About GUF Agency</a>
                     <a href="{{ route('leadership') }}" class="btn btn-outline">Leadership Message</a>
@@ -112,96 +522,142 @@
 </section>
 
 {{-- ═══════════════════════════════════════
+     OUR SERVICES — TABBED LAYOUT
+     (mirrors the screenshot's sidebar nav)
+═══════════════════════════════════════ --}}
+<section class="services-section">
+    <div class="container">
+        <div class="section-header text-center" style="margin-bottom: 3rem;">
+            <div class="chip" style="margin: 0 auto 0.85rem;"><i class="fa-solid fa-umbrella"></i> Our Services</div>
+            <h2 style="color: #0d1f3c;">What We Cover</h2>
+            <div class="divider divider-center"></div>
+            <p class="lead">Select a category to learn how GUF Agency protects your business.</p>
+        </div>
+
+        <div class="svc-layout">
+            {{-- Sidebar tabs --}}
+            <nav class="svc-tabs" role="tablist" aria-label="Insurance services">
+                @php
+                    $svcItems = [
+                        ['id' => 'motor',        'label' => 'Motor & Fleet',          'icon' => 'car'],
+                        ['id' => 'construction', 'label' => 'Construction & Bonds',   'icon' => 'helmet-safety'],
+                        ['id' => 'liability',    'label' => 'Liability & Assets',      'icon' => 'building-shield'],
+                        ['id' => 'fire',         'label' => 'Fire & Property',         'icon' => 'fire'],
+                        ['id' => 'workman',      'label' => "Workmen's Compensation",  'icon' => 'person-digging'],
+                    ];
+                @endphp
+                @foreach($svcItems as $i => $svc)
+                    <button
+                        class="svc-tab {{ $i === 0 ? 'active' : '' }}"
+                        onclick="switchSvc('{{ $svc['id'] }}')"
+                        id="tab-{{ $svc['id'] }}"
+                        role="tab"
+                        aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                        aria-controls="panel-{{ $svc['id'] }}"
+                    >
+                        <i class="fa-solid fa-{{ $svc['icon'] }}"></i>
+                        {{ $svc['label'] }}
+                    </button>
+                @endforeach
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e4eef8;">
+                    <a href="{{ route('products') }}" class="svc-tab" style="color: var(--brand); font-weight: 700;">
+                        <i class="fa-solid fa-grid-2"></i> View All 14 Products
+                    </a>
+                </div>
+            </nav>
+
+            {{-- Panels --}}
+            <div class="svc-panels">
+                @php
+                    $panels = [
+                        ['id' => 'motor',        'title' => 'Motor & Fleet Insurance',        'sub' => 'Motor & Fleet',       'img' => 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80', 'body' => 'Comprehensive coverage for corporate vehicles and entire fleets. We secure competitive motor policies that keep your operations moving — covering own damage, third-party liability, fire and theft.'],
+                        ['id' => 'construction', 'title' => 'Construction & Performance Bonds','sub' => 'Construction',        'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80', 'body' => "Project-specific cover including contractors all risk, plant & equipment, and surety bonds that satisfy tender requirements across Uganda's infrastructure sector."],
+                        ['id' => 'liability',    'title' => 'Liability & Asset Insurance',    'sub' => 'Liability',           'img' => 'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Public liability, product liability and asset all-risk policies to safeguard your balance sheet from unforeseen legal claims and property damage.'],
+                        ['id' => 'fire',         'title' => 'Fire & Property Insurance',      'sub' => 'Fire & Property',     'img' => 'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Protect your premises, stock, equipment and business interruption exposure against fire, lightning, explosion and allied perils.'],
+                        ['id' => 'workman',      'title' => "Workmen's Compensation",         'sub' => "Workmen's Comp",      'img' => 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Statutory and enhanced cover for your workforce against occupational injuries and illnesses — ensuring compliance and protecting both employer and employee.'],
+                    ];
+                @endphp
+                @foreach($panels as $i => $panel)
+                    <div class="svc-panel {{ $i === 0 ? 'active' : '' }}" id="panel-{{ $panel['id'] }}" role="tabpanel" aria-labelledby="tab-{{ $panel['id'] }}">
+                        <div class="svc-panel-img">
+                            <img src="{{ $panel['img'] }}" alt="{{ $panel['title'] }}">
+                        </div>
+                        <div class="svc-panel-body">
+                            <span class="overline">{{ $panel['sub'] }}</span>
+                            <h3>{{ $panel['title'] }}</h3>
+                            <p>{{ $panel['body'] }}</p>
+                            <a href="{{ route('contact') }}" class="btn-teal" style="font-size: 0.9rem; padding: 0.75rem 1.5rem;">
+                                <i class="fa-solid fa-paper-plane"></i> Request a Quote
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ═══════════════════════════════════════
      HOW IT WORKS — 3 STEPS
 ═══════════════════════════════════════ --}}
-<section class="section section-soft" style="padding: 80px 0;">
+<section class="process-section">
     <div class="container">
-        <div class="section-header text-center reveal">
+        <div class="section-header text-center">
             <div class="chip"><i class="fa-solid fa-diagram-project"></i> Simple Process</div>
-            <h2>How It Works</h2>
+            <h2 style="color: #0d1f3c;">How It Works</h2>
             <div class="divider divider-center"></div>
-            <p class="lead">Getting the right coverage takes three simple steps with GUF Agency.</p>
+            <p class="lead">Getting the right coverage takes three simple steps.</p>
         </div>
-        <div class="grid-3" style="gap: 2.5rem; padding-top: 2.5rem;">
-            <div class="step-card reveal reveal-delay-1">
-                <div class="step-num">1</div>
-                <div class="icon-box" style="margin-bottom: 1rem;"><i class="fa-solid fa-comments"></i></div>
-                <h3>Tell Us Your Needs</h3>
-                <p style="color: var(--gray-600); font-size: 0.9rem; line-height: 1.65;">Share your business details and risk exposures with our advisors — in person, by phone, or via our contact form.</p>
-            </div>
-            <div class="step-card reveal reveal-delay-2">
-                <div class="step-num">2</div>
-                <div class="icon-box" style="margin-bottom: 1rem;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                <h3>We Assess &amp; Advise</h3>
-                <p style="color: var(--gray-600); font-size: 0.9rem; line-height: 1.65;">We evaluate your risks, compare insurers across the market, and recommend the most suitable and cost-effective coverage.</p>
-            </div>
-            <div class="step-card reveal reveal-delay-3">
-                <div class="step-num">3</div>
-                <div class="icon-box" style="margin-bottom: 1rem;"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Get Covered</h3>
-                <p style="color: var(--gray-600); font-size: 0.9rem; line-height: 1.65;">We place your policy and manage it end-to-end — from documentation and renewals to claims advocacy.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════
-     PRODUCTS — MASONRY CARDS
-═══════════════════════════════════════ --}}
-<section class="section section-soft" style="background: #f8fafc; padding: 100px 0;">
-    <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 4rem;">
-            <div class="chip" style="margin: 0 auto 1rem;"><i class="fa-solid fa-umbrella"></i> Coverage Range</div>
-            <h2 style="font-size: 2.5rem;">Featured Insurance Products</h2>
-            <div class="divider divider-center"></div>
-        </div>
-        
-        <div class="grid-3" style="gap: 2rem;">
+        <div class="process-steps">
             @php
-                $products = [
-                    ['Motor & Fleet', 'car', 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80'],
-                    ['Construction & Bonds', 'helmet-safety', 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80'],
-                    ['Liability & Assets', 'building-shield', 'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=900']
+                $steps = [
+                    ['1', 'comments', 'Tell Us Your Needs', 'Share your business details and risk profile with our advisors — in person, by phone, or via our contact form.'],
+                    ['2', 'magnifying-glass-chart', 'We Assess & Advise', 'We evaluate your risks, compare policies across Uganda\'s insurer market, and recommend the most suitable cover.'],
+                    ['3', 'shield-halved', 'Get Covered', 'We place your policy and manage it end-to-end — renewals, documentation, and claims advocacy included.'],
                 ];
             @endphp
-
-            @foreach($products as $p)
-            <article class="img-card reveal reveal-delay-{{ $loop->index + 1 }}" style="background: #fff; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
-                <div style="height: 200px; overflow: hidden; position: relative;">
-                    <img src="{{ $p[2] }}" alt="{{ $p[0] }}" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; top: 15px; left: 15px; width: 40px; height: 40px; background: var(--brand); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                        <i class="fa-solid fa-{{ $p[1] }}"></i>
-                    </div>
+            @foreach($steps as $step)
+                <div class="step-box">
+                    <div class="step-number">{{ $step[0] }}</div>
+                    <div class="step-icon"><i class="fa-solid fa-{{ $step[1] }}"></i></div>
+                    <h3>{{ $step[2] }}</h3>
+                    <p>{{ $step[3] }}</p>
                 </div>
-                <div class="img-card-body" style="padding: 1.5rem;">
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">{{ $p[0] }}</h3>
-                    <p style="font-size: 0.9rem; color: #666;">Tailored policies designed to mitigate specific corporate risks in the Ugandan market.</p>
-                </div>
-            </article>
             @endforeach
-        </div>
-        <div class="text-center" style="margin-top: 3rem;">
-            <a href="{{ route('products') }}" class="btn btn-primary btn-lg">View All 14 Products</a>
         </div>
     </div>
 </section>
 
 {{-- ═══════════════════════════════════════
-     CTA — ENHANCED IMPACT
+     CTA BAND
 ═══════════════════════════════════════ --}}
-<section class="cta-section" style="background: var(--brand); padding: 80px 0; color: #fff; position: relative; border-radius: 30px; margin: 40px; text-align: center;">
-    <div class="container cta-inner">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff;">Speak with a <span style="text-decoration: underline; text-decoration-color: var(--brand-lt);">Corporate Expert</span> Today</h2>
-        <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2.5rem;">
-            Request a free risk assessment at your premises. Our team will identify your exposures and recommend the right coverage — no obligation.
-        </p>
-        <div class="btn-row" style="justify-content: center;">
-            <a href="{{ route('contact') }}" class="btn btn-light btn-lg" style="background: #fff; color: var(--brand); border: none;">
-                <i class="fa-solid fa-paper-plane"></i> Get a Free Quote
-            </a>
-            <a href="{{ route('services') }}" class="btn btn-ghost-light btn-lg" style="border-color: rgba(255,255,255,0.4);">Explore Our Services</a>
-        </div>
+<div class="cta-band">
+    <h2>Speak with a <span style="text-decoration: underline; text-decoration-color: rgba(255,255,255,0.4);">Corporate Expert</span> Today</h2>
+    <p>Request a free on-site risk assessment. Our team will identify your exposures and recommend the right coverage — no obligation, no pressure.</p>
+    <div class="cta-band-actions">
+        <a href="{{ route('contact') }}" class="btn-white">
+            <i class="fa-solid fa-paper-plane"></i> Get a Free Quote
+        </a>
+        <a href="{{ route('services') }}" class="btn-outline-white">
+            Explore Our Services
+        </a>
     </div>
-</section>
+</div>
+
+<script>
+function switchSvc(id) {
+    document.querySelectorAll('.svc-tab').forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.svc-panel').forEach(function(p) {
+        p.classList.remove('active');
+    });
+    var tab = document.getElementById('tab-' + id);
+    var panel = document.getElementById('panel-' + id);
+    if (tab) { tab.classList.add('active'); tab.setAttribute('aria-selected', 'true'); }
+    if (panel) { panel.classList.add('active'); }
+}
+</script>
 
 @endsection
