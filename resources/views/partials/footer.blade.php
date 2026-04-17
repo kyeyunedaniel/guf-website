@@ -4,13 +4,12 @@
 
             <div>
                 <a href="{{ route('home') }}" class="site-logo footer-logo" aria-label="GUF Agency Ltd – Home">
-                    <div class="logo-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <span class="logo-name">GUF Agency</span>
-                        <span class="logo-tag">Ltd</span>
-                    </div>
+                    <img
+                        src="{{ asset('images/branding/guf-logo.jpg') }}"
+                        alt="GUF Agency Ltd"
+                        class="site-logo-image site-logo-image--footer"
+                        loading="lazy"
+                    >
                 </a>
                 <p class="footer-tagline">Our Customers, Our Priority</p>
                 <p class="footer-reg"><i class="fa-solid fa-certificate"></i> Licensed &amp; Regulated by IRA Uganda</p>

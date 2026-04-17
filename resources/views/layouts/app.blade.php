@@ -818,6 +818,15 @@
             gap: 10px;
             text-decoration: none;
         }
+        .site-logo-image {
+            display: block;
+            height: 46px;
+            width: auto;
+            object-fit: contain;
+        }
+        .site-logo-image--footer {
+            height: 78px;
+        }
         .site-logo .logo-icon {
             width: 38px; height: 38px;
             background: var(--brand);
@@ -1160,6 +1169,8 @@
             .phl-grid { grid-template-columns: 1fr; gap: 2rem; }
             .cta-band { margin: 0 16px 48px; padding: 48px 24px; }
             .cta-band h2 { font-size: 1.6rem; }
+            .site-logo-image { height: 40px; }
+            .site-logo-image--footer { height: 62px; }
             .hamburger { display: flex; }
             .primary-nav {
                 flex-direction: column; align-items: stretch;

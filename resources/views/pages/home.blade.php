@@ -307,6 +307,44 @@
     .svc-panel-body h3 { font-size: 1.7rem; color: #0d1f3c; margin-bottom: 1rem; line-height: 1.25; }
     .svc-panel-body p { color: #546e8a; font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.5rem; }
 
+    /* ── PARTNERS ── */
+    .partners-section { padding: 96px 0; background: #fff; }
+    .partners-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2.2rem;
+    }
+    .partner-card {
+        background: #f7fbff;
+        border: 1.5px solid #e4eef8;
+        border-radius: 16px;
+        padding: 1.1rem 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.2s ease;
+    }
+    .partner-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--brand);
+        box-shadow: 0 12px 28px rgba(0,30,80,0.08);
+    }
+    .partner-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: #eef4ff;
+        color: var(--brand);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+    .partner-card strong { display: block; color: #0d1f3c; font-size: 0.9rem; }
+    .partner-card span { color: #788fa8; font-size: 0.78rem; }
+
     /* ── PROCESS ── */
     .process-section { padding: 96px 0; background: #fff; }
     .process-steps {
@@ -402,6 +440,7 @@
         .svc-layout { grid-template-columns: 1fr; }
         .svc-tabs { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
         .svc-panel.active { grid-template-columns: 1fr; }
+        .partners-strip { grid-template-columns: 1fr; }
         .process-steps { grid-template-columns: 1fr; }
         .process-steps::before { display: none; }
         .stats-bar-inner { flex-wrap: wrap; gap: 1.5rem; }
@@ -457,7 +496,7 @@
                 <div class="hero-float-card fc-top">
                     <div class="fc-icon" style="background: #eef4ff; color: var(--brand);"><i class="fa-solid fa-star"></i></div>
                     <div class="fc-text">
-                        <strong>10+ Clients</strong>
+                        <strong>100+ Clients</strong>
                         <span>Trusted corporate partners</span>
                     </div>
                 </div>
@@ -593,6 +632,47 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+</section>
+
+{{-- ═══════════════════════════════════════
+     PARTNERS
+═══════════════════════════════════════ --}}
+<section class="partners-section">
+    <div class="container">
+        <div class="grid-2" style="gap: 2rem; align-items: center;">
+            <div>
+                <div class="chip" style="margin-bottom: 1rem;"><i class="fa-solid fa-handshake"></i> Our Partners</div>
+                <h2 style="font-size: 2.15rem; color: #0d1f3c; line-height: 1.2; margin-bottom: 0.8rem;">
+                    Backed by Trusted Insurance Partners
+                </h2>
+                <p style="color: #546e8a; font-size: 0.97rem; line-height: 1.75; margin-bottom: 0;">
+                    We collaborate with reliable insurers to secure competitive coverage, prompt claims support, and long-term protection for our clients.
+                </p>
+            </div>
+            <div class="partners-strip">
+                @php
+                    $partners = [
+                        ['building-columns', 'Mayfair Insurance Uganda', 'Authorized partner insurer'],
+                        ['shield-halved', 'IRA Regulatory Framework', 'Licensed and compliant advisory'],
+                        ['scale-balanced', 'Independent Market Access', 'Objective, client-first recommendations'],
+                    ];
+                @endphp
+                @foreach($partners as $partner)
+                    <div class="partner-card">
+                        <div class="partner-icon"><i class="fa-solid fa-{{ $partner[0] }}"></i></div>
+                        <div>
+                            <strong>{{ $partner[1] }}</strong>
+                            <span>{{ $partner[2] }}</span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="btn-row" style="margin-top: 1.4rem;">
+            <a href="{{ route('partners') }}" class="btn btn-primary">View Partner Details</a>
+            <a href="{{ route('contact') }}" class="btn btn-outline">Speak to an Advisor</a>
         </div>
     </div>
 </section>

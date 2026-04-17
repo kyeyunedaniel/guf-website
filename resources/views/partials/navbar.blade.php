@@ -2,13 +2,12 @@
     <div class="container hdr-inner">
 
         <a href="{{ route('home') }}" class="site-logo" aria-label="GUF Agency Ltd – Home">
-            <div class="logo-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <div>
-                <span class="logo-name">GUF Agency</span>
-                <span class="logo-tag">Ltd</span>
-            </div>
+            <img
+                src="{{ asset('images/branding/guf-logo.jpg') }}"
+                alt="GUF Agency Ltd"
+                class="site-logo-image"
+                loading="eager"
+            >
         </a>
 
         <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
