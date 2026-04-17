@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="phl-img">
-                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="GUF Agency consultation" loading="lazy">
+                <img src="{{ asset('images/illustrations/about-cartoon.svg') }}" alt="GUF Agency consultation cartoon illustration" loading="lazy">
             </div>
         </div>
     </div>

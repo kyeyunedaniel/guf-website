@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="phl-img">
-                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Insurance partnership" loading="lazy">
+                <img src="{{ asset('images/illustrations/partners-cartoon.svg') }}" alt="Insurance partnership cartoon illustration" loading="lazy">
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="phl-img">
-                <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Business professionals" loading="lazy">
+                <img src="{{ asset('images/illustrations/clients-cartoon.svg') }}" alt="Business clients cartoon illustration" loading="lazy">
             </div>
         </div>
     </div>

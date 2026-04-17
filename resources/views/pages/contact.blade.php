@@ -13,7 +13,7 @@
                 <p style="color:#00b4b4;font-weight:700;font-size:1rem;"><i class="fa-solid fa-quote-left" style="font-size:.85em;margin-right:.4rem;"></i>Our Customers, Our Priority</p>
             </div>
             <div class="phl-img">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Insurance consultation" loading="lazy">
+                <img src="{{ asset('images/illustrations/contact-cartoon.svg') }}" alt="Insurance consultation cartoon illustration" loading="lazy">
             </div>
         </div>
     </div>

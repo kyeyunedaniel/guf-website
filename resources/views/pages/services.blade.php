@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="phl-img">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Financial advisor discussing insurance" loading="lazy">
+                <img src="{{ asset('images/illustrations/services-cartoon.svg') }}" alt="Financial advisor service cartoon illustration" loading="lazy">
             </div>
         </div>
     </div>

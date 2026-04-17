@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="phl-img">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80" alt="Muganga Lydia, Principal Officer" loading="lazy">
+                <img src="{{ asset('images/illustrations/insurance-cartoon.svg') }}" alt="Insurance leadership illustration" loading="lazy">
             </div>
         </div>
     </div>
@@ -25,11 +25,10 @@
 <section class="section section-white" style="padding:88px 0;">
     <div class="container">
         <div class="leader-profile">
-            <div>
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
-                     alt="Muganga Lydia" loading="lazy"
-                     class="leader-avatar"
-                     style="box-shadow:0 20px 60px rgba(0,30,80,.1);">
+            <div style="background:#f7fbff;border:1.5px solid #e4eef8;border-radius:20px;padding:1.6rem;max-width:300px;">
+                <div class="icon-box" style="margin-bottom:1rem;"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 style="font-size:1.05rem;color:#0d1f3c;margin-bottom:.45rem;">Leadership Desk</h3>
+                <p style="font-size:.9rem;line-height:1.7;color:#546e8a;margin:0;">Providing objective risk guidance, insurer evaluation, and dependable claims support for corporate clients across Uganda.</p>
             </div>
             <div>
                 <div class="chip" style="margin-bottom:1rem;"><i class="fa-solid fa-quote-left"></i> Principal Officer's Statement</div>
