@@ -227,7 +227,7 @@
     }
 
     /* ── ABOUT ── */
-    .about-section { padding: 96px 0; }
+    .about-section { padding: 88px 0 56px; }
     .about-img-wrap {
         position: relative;
     }
@@ -264,7 +264,7 @@
     }
 
     /* ── SERVICES TAB ── */
-    .services-section { background: #f7fbff; padding: 96px 0; }
+    .services-section { background: #f7fbff; padding: 64px 0 96px; }
     .svc-layout {
         display: grid;
         grid-template-columns: 260px 1fr;
@@ -332,7 +332,7 @@
     .svc-panel-body p { color: #546e8a; font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.5rem; }
 
     /* ── PARTNERS ── */
-    .partners-section { padding: 96px 0; background: #fff; }
+    .partners-section { padding: 68px 0 52px; background: #fff; }
     .partners-showcase {
         background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
         border: 1.5px solid #d9e6f5;
@@ -422,12 +422,12 @@
     .partner-card span { color: #627a94; font-size: 0.8rem; }
 
     /* ── PROCESS ── */
-    .process-section { padding: 96px 0; background: #fff; }
+    .process-section { padding: 58px 0 82px; background: #fff; }
     .process-steps {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
-        padding-top: 3rem;
+        padding-top: 2.1rem;
         position: relative;
     }
     .process-steps::before {
@@ -523,8 +523,13 @@
         .sbi { border-right: 2px solid #d7e5f7; border-bottom: 2px solid #d7e5f7; }
         .sbi:nth-child(2n) { border-right: none; }
         .sbi:nth-last-child(-n+2) { border-bottom: none; }
+        .partners-section { padding: 52px 0 40px; }
         .partners-showcase { padding: 0.9rem; }
+        .process-section { padding: 48px 0 64px; }
+        .process-steps { padding-top: 1.5rem; }
         .cta-band { margin: 0 16px 48px; padding: 48px 24px; }
+        .about-section { padding: 72px 0 42px; }
+        .services-section { padding: 52px 0 76px; }
         .about-section .grid-2 { grid-template-columns: 1fr; }
         .about-badge-float { right: 10px; }
     }
