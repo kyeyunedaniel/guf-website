@@ -3,7 +3,36 @@
 @section('description', 'Contact GUF Agency Ltd for corporate insurance quotes, advisory support, and risk assessment services in Uganda.')
 @section('content')
 
-<section class="page-hero-light">
+<style>
+    .contact-hero-compact {
+        padding: 56px 0 44px;
+    }
+    .contact-hero-compact .phl-grid {
+        gap: 2rem;
+        align-items: center;
+    }
+    .contact-hero-compact h1 {
+        font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+        margin-bottom: 0.6rem;
+    }
+    .contact-hero-compact .phl-lead {
+        margin-bottom: 0.65rem;
+    }
+    .contact-hero-compact .phl-img img {
+        max-height: 300px;
+        object-fit: contain;
+    }
+    @media (max-width: 768px) {
+        .contact-hero-compact {
+            padding: 44px 0 34px;
+        }
+        .contact-hero-compact .phl-img img {
+            max-height: 220px;
+        }
+    }
+</style>
+
+<section class="page-hero-light contact-hero-compact">
     <div class="container">
         <div class="phl-grid">
             <div>
