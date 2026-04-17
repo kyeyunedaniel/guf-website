@@ -24,11 +24,12 @@
 
 <section class="section section-white" style="padding:88px 0;">
     <div class="container">
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:start;">
+        <div class="leader-profile">
             <div>
                 <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
                      alt="Muganga Lydia" loading="lazy"
-                     style="width:260px;height:320px;object-fit:cover;border-radius:20px;box-shadow:0 20px 60px rgba(0,30,80,.1);">
+                     class="leader-avatar"
+                     style="box-shadow:0 20px 60px rgba(0,30,80,.1);">
             </div>
             <div>
                 <div class="chip" style="margin-bottom:1rem;"><i class="fa-solid fa-quote-left"></i> Principal Officer's Statement</div>

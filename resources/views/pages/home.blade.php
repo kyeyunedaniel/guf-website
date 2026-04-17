@@ -170,36 +170,52 @@
 
     /* ── STATS BAR ── */
     .stats-bar {
-        background: #fff;
-        border-top: 1px solid #e8eef5;
-        border-bottom: 1px solid #e8eef5;
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        border-top: 1px solid #dbe7f5;
+        border-bottom: 1px solid #dbe7f5;
         padding: 2rem 0;
     }
     .stats-bar-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        background: #fff;
+        border: 1.5px solid #cfdff2;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,30,80,0.06);
     }
     .sbi {
-        flex: 1;
         text-align: center;
-        padding: 0 1rem;
-        border-right: 1px solid #e8eef5;
+        padding: 1.3rem 1rem 1.1rem;
+        border-right: 2px solid #d7e5f7;
+        position: relative;
     }
     .sbi:last-child { border-right: none; }
+    .sbi::before {
+        content: '';
+        width: 34px;
+        height: 3px;
+        border-radius: 999px;
+        background: #bfd4ef;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .sbi strong {
         display: block;
-        font-size: 1.9rem;
+        font-size: 2rem;
         font-weight: 800;
         color: var(--brand);
         line-height: 1.1;
+        margin-top: 0.25rem;
     }
     .sbi span {
-        font-size: 0.75rem;
-        color: #788fa8;
+        font-size: 0.8rem;
+        color: #4f6782;
         text-transform: uppercase;
-        letter-spacing: 0.07em;
-        font-weight: 600;
+        letter-spacing: 0.08em;
+        font-weight: 700;
     }
 
     /* ── ABOUT ── */
@@ -443,11 +459,18 @@
         .partners-strip { grid-template-columns: 1fr; }
         .process-steps { grid-template-columns: 1fr; }
         .process-steps::before { display: none; }
-        .stats-bar-inner { flex-wrap: wrap; gap: 1.5rem; }
-        .sbi { flex: 1 0 40%; border-right: none; border-bottom: 1px solid #e8eef5; padding-bottom: 1rem; }
+        .stats-bar-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .sbi { border-right: 2px solid #d7e5f7; border-bottom: 2px solid #d7e5f7; }
+        .sbi:nth-child(2n) { border-right: none; }
+        .sbi:nth-last-child(-n+2) { border-bottom: none; }
         .cta-band { margin: 0 16px 48px; padding: 48px 24px; }
         .about-section .grid-2 { grid-template-columns: 1fr; }
         .about-badge-float { right: 10px; }
+    }
+    @media (max-width: 560px) {
+        .stats-bar-inner { grid-template-columns: 1fr; }
+        .sbi { border-right: none; border-bottom: 2px solid #d7e5f7; }
+        .sbi:last-child { border-bottom: none; }
     }
 </style>
 
@@ -484,7 +507,7 @@
 
             <div class="hero-visual">
                 <div class="main-img">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Professional insurance team">
+                    <img src="{{ asset('images/illustrations/insurance-cartoon.svg') }}" alt="Cartoon insurance advisory team illustration">
                 </div>
                 <div class="hero-float-card fc-bottom">
                     <div class="fc-icon"><i class="fa-solid fa-shield-halved"></i></div>
