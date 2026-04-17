@@ -605,7 +605,7 @@
     <div class="container">
         <div class="grid-2" style="gap: 5rem; align-items: center;">
             <div class="about-img-wrap">
-                <img src="https://images.pexels.com/photos/7691728/pexels-photo-7691728.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Black business professionals in a corporate meeting">
+                <img src="{{ asset('images/handshake.jpg') }}" alt="Black business professionals shaking hands in a corporate setting">
                 <div class="about-badge-float">
                     <div class="abf-num">IRA</div>
                     <div class="abf-lbl">Certified Partner</div>
@@ -685,11 +685,11 @@
             <div class="svc-panels">
                 @php
                     $panels = [
-                        ['id' => 'motor',        'title' => 'Motor & Fleet Insurance',        'sub' => 'Motor & Fleet',       'img' => 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80', 'body' => 'Comprehensive coverage for corporate vehicles and entire fleets. We secure competitive motor policies that keep your operations moving — covering own damage, third-party liability, fire and theft.'],
-                        ['id' => 'construction', 'title' => 'Construction & Performance Bonds','sub' => 'Construction',        'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80', 'body' => "Project-specific cover including contractors all risk, plant & equipment, and surety bonds that satisfy tender requirements across Uganda's infrastructure sector."],
-                        ['id' => 'liability',    'title' => 'Liability & Asset Insurance',    'sub' => 'Liability',           'img' => 'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Public liability, product liability and asset all-risk policies to safeguard your balance sheet from unforeseen legal claims and property damage.'],
-                        ['id' => 'fire',         'title' => 'Fire & Property Insurance',      'sub' => 'Fire & Property',     'img' => 'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Protect your premises, stock, equipment and business interruption exposure against fire, lightning, explosion and allied perils.'],
-                        ['id' => 'workman',      'title' => "Workmen's Compensation",         'sub' => "Workmen's Comp",      'img' => 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=900', 'body' => 'Statutory and enhanced cover for your workforce against occupational injuries and illnesses — ensuring compliance and protecting both employer and employee.'],
+                        ['id' => 'motor',        'title' => 'Motor & Fleet Insurance',        'sub' => 'Motor & Fleet',       'img' => asset('images/fleet.jpg'), 'body' => 'Comprehensive coverage for corporate vehicles and entire fleets. We secure competitive motor policies that keep your operations moving — covering own damage, third-party liability, fire and theft.'],
+                        ['id' => 'construction', 'title' => 'Construction & Performance Bonds','sub' => 'Construction',        'img' => asset('images/construction.jpg'), 'body' => "Project-specific cover including contractors all risk, plant & equipment, and surety bonds that satisfy tender requirements across Uganda's infrastructure sector."],
+                        ['id' => 'liability',    'title' => 'Liability & Asset Insurance',    'sub' => 'Liability',           'img' => asset('images/liability-assets.jpg'), 'body' => 'Public liability, product liability and asset all-risk policies to safeguard your balance sheet from unforeseen legal claims and property damage.'],
+                        ['id' => 'fire',         'title' => 'Fire & Property Insurance',      'sub' => 'Fire & Property',     'img' => asset('images/fire-and-property.jpg'), 'body' => 'Protect your premises, stock, equipment and business interruption exposure against fire, lightning, explosion and allied perils.'],
+                        ['id' => 'workman',      'title' => "Workmen's Compensation",         'sub' => "Workmen's Comp",      'img' => asset('images/worksmen-compensation.jpg'), 'body' => 'Statutory and enhanced cover for your workforce against occupational injuries and illnesses — ensuring compliance and protecting both employer and employee.'],
                     ];
                 @endphp
                 @foreach($panels as $i => $panel)
