@@ -325,17 +325,69 @@
 
     /* ── PARTNERS ── */
     .partners-section { padding: 96px 0; background: #fff; }
+    .partners-showcase {
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        border: 1.5px solid #d9e6f5;
+        border-radius: 22px;
+        padding: 1.1rem;
+        box-shadow: 0 14px 36px rgba(0,30,80,0.08);
+    }
+    .partner-feature {
+        background: linear-gradient(135deg, #003380 0%, #0052cc 58%, #0f7fe5 100%);
+        border-radius: 16px;
+        padding: 1.35rem 1.35rem 1.15rem;
+        color: #fff;
+        margin-bottom: 0.9rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .partner-feature::before {
+        content: '';
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        top: -70px;
+        right: -50px;
+    }
+    .partner-feature .pf-overline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(255,255,255,0.16);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 999px;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+    }
+    .partner-feature h3 {
+        color: #fff;
+        font-size: 1.15rem;
+        margin-bottom: 0.35rem;
+        line-height: 1.25;
+    }
+    .partner-feature p {
+        color: rgba(255,255,255,0.88);
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        max-width: 32ch;
+    }
     .partners-strip {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 2.2rem;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
     .partner-card {
-        background: #f7fbff;
-        border: 1.5px solid #e4eef8;
-        border-radius: 16px;
-        padding: 1.1rem 1.2rem;
+        background: #fff;
+        border: 1.5px solid #dbe8f7;
+        border-radius: 14px;
+        padding: 0.95rem 1rem;
         display: flex;
         align-items: center;
         gap: 0.8rem;
@@ -347,8 +399,8 @@
         box-shadow: 0 12px 28px rgba(0,30,80,0.08);
     }
     .partner-icon {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         border-radius: 11px;
         background: #eef4ff;
         color: var(--brand);
@@ -358,8 +410,8 @@
         font-size: 1rem;
         flex-shrink: 0;
     }
-    .partner-card strong { display: block; color: #0d1f3c; font-size: 0.9rem; }
-    .partner-card span { color: #788fa8; font-size: 0.78rem; }
+    .partner-card strong { display: block; color: #0d1f3c; font-size: 0.92rem; }
+    .partner-card span { color: #627a94; font-size: 0.8rem; }
 
     /* ── PROCESS ── */
     .process-section { padding: 96px 0; background: #fff; }
@@ -463,6 +515,7 @@
         .sbi { border-right: 2px solid #d7e5f7; border-bottom: 2px solid #d7e5f7; }
         .sbi:nth-child(2n) { border-right: none; }
         .sbi:nth-last-child(-n+2) { border-bottom: none; }
+        .partners-showcase { padding: 0.9rem; }
         .cta-band { margin: 0 16px 48px; padding: 48px 24px; }
         .about-section .grid-2 { grid-template-columns: 1fr; }
         .about-badge-float { right: 10px; }
@@ -552,7 +605,7 @@
     <div class="container">
         <div class="grid-2" style="gap: 5rem; align-items: center;">
             <div class="about-img-wrap">
-                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="GUF Agency team">
+                <img src="https://images.pexels.com/photos/7691728/pexels-photo-7691728.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Black business professionals in a corporate meeting">
                 <div class="about-badge-float">
                     <div class="abf-num">IRA</div>
                     <div class="abf-lbl">Certified Partner</div>
