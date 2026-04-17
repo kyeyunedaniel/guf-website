@@ -12,14 +12,14 @@
     <style>
         /* ============================================
            PROFESSIONAL INSURANCE THEME
-           Primary: #00d6c1 | White | Black/Grayscale
+           Primary: #0052CC | White | Black/Grayscale
         ============================================ */
         :root {
-            --brand: #00d6c1;
-            --brand-dark: #00b3a1;
-            --brand-light: #ccf7f2;
-            --brand-ultra-light: #e6fffc;
-            --brand-lt: #66f3e5;
+            --brand: #0052CC;
+            --brand-dark: #003D99;
+            --brand-light: #b3ccff;
+            --brand-ultra-light: #e8f0fe;
+            --brand-lt: #80aaff;
             
             --gray-900: #111111;
             --gray-800: #1f1f1f;
@@ -36,7 +36,7 @@
             --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
             --shadow-lg: 0 16px 48px rgba(0,0,0,0.08);
             --shadow-xl: 0 24px 64px rgba(0,0,0,0.12);
-            --shadow-brand: 0 8px 20px rgba(0,214,193,0.2);
+            --shadow-brand: 0 8px 20px rgba(0,82,204,0.2);
             
             --radius-sm: 6px;
             --radius-md: 12px;
@@ -116,7 +116,7 @@
         }
         .btn-primary {
             background: var(--brand);
-            color: var(--gray-900);
+            color: #ffffff;
             border-color: var(--brand);
         }
         .btn-primary:hover {
@@ -379,14 +379,14 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(0,214,193,0.12);
+            background: rgba(0,82,204,0.12);
             padding: 0.4rem 1rem;
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 500;
             color: var(--brand);
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,214,193,0.25);
+            border: 1px solid rgba(0,82,204,0.25);
         }
         .hero h1 {
             color: white;
@@ -950,7 +950,7 @@
         /* Partner banner card */
         .banner-card { background: linear-gradient(135deg, var(--gray-900) 0%, #0a2e2c 100%); border-radius: var(--radius-xl); padding: 3rem 2.5rem; text-align: center; color: #fff; }
         .banner-card h3 { color: #fff; font-size: 1.75rem; }
-        .partner-badge { width: 64px; height: 64px; background: rgba(0,214,193,0.15); border: 2px solid rgba(0,214,193,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--brand); }
+        .partner-badge { width: 64px; height: 64px; background: rgba(0,82,204,0.15); border: 2px solid rgba(0,82,204,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--brand); }
 
         /* Contact detail */
         .contact-detail-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
@@ -970,12 +970,12 @@
             color: var(--gray-800); outline: none; width: 100%; background: #fff;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .field input:focus, .field textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,214,193,0.12); }
+        .field input:focus, .field textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,82,204,0.12); }
         .field textarea { min-height: 120px; resize: vertical; }
         .checkbox-field { display: flex; gap: 0.65rem; align-items: flex-start; margin-bottom: 0.85rem; font-size: 0.85rem; color: var(--gray-700); }
         .checkbox-field input[type="checkbox"] { margin-top: 2px; accent-color: var(--brand); flex-shrink: 0; }
         .checkbox-field a { color: var(--brand); text-decoration: underline; }
-        .alert-success { background: #d1fdf5; border: 1px solid #5dfcd5; border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 0.9rem; color: #006b52; margin-bottom: 1.25rem; }
+        .alert-success { background: #e8f0fe; border: 1px solid #b3ccff; border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 0.9rem; color: #003D99; margin-bottom: 1.25rem; }
         .error-box { background: #fef2f2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 0.86rem; color: #991b1b; margin-bottom: 1.25rem; }
         .error-box ul { padding-left: 1.2rem; margin: 0; }
 
@@ -997,7 +997,7 @@
         /* Step cards — how it works */
         .step-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 2.25rem 1.75rem 1.75rem; position: relative; transition: var(--transition); }
         .step-card:hover { box-shadow: var(--shadow-md); border-color: var(--brand-light); transform: translateY(-4px); }
-        .step-num { position: absolute; top: -18px; left: 1.75rem; width: 36px; height: 36px; background: var(--brand); color: var(--gray-900); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,214,193,0.4); }
+        .step-num { position: absolute; top: -18px; left: 1.75rem; width: 36px; height: 36px; background: var(--brand); color: var(--gray-900); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,82,204,0.4); }
 
         /* WhatsApp float button */
         .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; display: flex; align-items: center; gap: 0.6rem; background: #25d366; color: #fff; border-radius: 50px; padding: 0.75rem 1.25rem 0.75rem 0.95rem; text-decoration: none; font-weight: 700; font-size: 0.875rem; box-shadow: 0 6px 20px rgba(37,211,102,0.4); transition: all 0.25s; }

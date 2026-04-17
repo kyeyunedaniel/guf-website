@@ -16,7 +16,7 @@
         <div class="hero-full__inner" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;">
             <div>
                 <div class="chip chip-light" style="backdrop-filter: blur(4px); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 1.5rem;">
-                    <i class="fa-solid fa-shield-halved" style="color: #ffd700;"></i>
+                    <i class="fa-solid fa-shield-halved" style="color: var(--brand-lt);"></i>
                     IRA Licensed Corporate Insurance Agency
                 </div>
                 <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; color: #fff;">
