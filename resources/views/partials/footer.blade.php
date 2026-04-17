@@ -3,21 +3,26 @@
         <div class="container footer-inner">
 
             <div>
-                <a href="{{ route('home') }}" class="site-logo footer-logo" aria-label="GUF Agency Ltd – Home">
-                    <img
-                        src="{{ asset('images/branding/guf-logo.jpg') }}"
-                        alt="GUF Agency Ltd"
-                        class="site-logo-image site-logo-image--footer"
-                        loading="lazy"
-                    >
-                </a>
-                <p class="footer-tagline">Our Customers, Our Priority</p>
-                <p class="footer-reg"><i class="fa-solid fa-certificate"></i> Licensed &amp; Regulated by IRA Uganda</p>
-                <div class="footer-contact-list">
-                    <a href="tel:+256772588426"><i class="fa-solid fa-phone"></i> +256 772 588 426</a>
-                    <a href="tel:+256701588426"><i class="fa-solid fa-phone"></i> +256 701 588 426</a>
-                    <a href="mailto:business@gufagency.com"><i class="fa-solid fa-envelope"></i> business@gufagency.com</a>
-                    <span><i class="fa-solid fa-location-dot"></i> Plot 30 Conrad House, Jinja Road, Kampala</span>
+                <div class="footer-brand-panel">
+                    <a href="{{ route('home') }}" class="site-logo footer-logo" aria-label="GUF Agency Ltd – Home">
+                        <img
+                            src="{{ asset('images/branding/guf-logo.jpg') }}"
+                            alt="GUF Agency Ltd"
+                            class="site-logo-image site-logo-image--footer"
+                            loading="lazy"
+                        >
+                    </a>
+                    <p class="footer-tagline">Our Customers, Our Priority</p>
+                    <p class="footer-reg"><i class="fa-solid fa-certificate"></i> Licensed &amp; Regulated by IRA Uganda</p>
+                    <div class="footer-contact-list">
+                        <a href="tel:+256772588426"><i class="fa-solid fa-phone"></i> +256 772 588 426</a>
+                        <a href="tel:+256701588426"><i class="fa-solid fa-phone"></i> +256 701 588 426</a>
+                        <a href="mailto:business@gufagency.com"><i class="fa-solid fa-envelope"></i> business@gufagency.com</a>
+                        <span><i class="fa-solid fa-location-dot"></i> Plot 30 Conrad House, Jinja Road, Kampala</span>
+                    </div>
+                    <a href="{{ route('contact') }}" class="footer-cta-link">
+                        <i class="fa-solid fa-paper-plane"></i> Request a Free Quote
+                    </a>
                 </div>
             </div>
 

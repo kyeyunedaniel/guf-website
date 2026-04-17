@@ -283,7 +283,7 @@
         padding: 0.85rem 1.1rem;
         border-radius: 10px;
         cursor: pointer;
-        border: none;
+        border: 1px solid #d7e5f5;
         background: transparent;
         text-align: left;
         font-family: inherit;
@@ -302,11 +302,12 @@
         background: transparent;
         transition: background 0.2s;
     }
-    .svc-tab:hover { background: #e8f0fe; color: var(--brand); }
+    .svc-tab:hover { background: #e8f0fe; color: var(--brand); border-color: #b7cde8; }
     .svc-tab.active {
         background: #fff;
         color: #0d1f3c;
         font-weight: 700;
+        border-color: #a8c3e3;
         box-shadow: 0 4px 16px rgba(0,30,80,0.08);
     }
     .svc-tab.active::before { background: var(--brand); }
