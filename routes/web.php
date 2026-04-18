@@ -15,3 +15,4 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactSubmissionController::class, 'store'])->name('contact.store');
 Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/cookie-policy', 'pages.cookie-policy')->name('cookie-policy');
+Route::get('/google37f8358e7a69262f.html', fn() => response('google-site-verification: google37f8358e7a69262f.html')->header('Content-Type', 'text/html'));
